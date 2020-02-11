@@ -25,7 +25,7 @@ public class NotesDao {
 	static Logger logger = Logger.getAnonymousLogger();
 	private static final String CONTEXT = "context";
 	
-	   public static void Demo(String serverURI) throws SQLException {
+	   public static void demo(String serverURI){
 	       try {
 	    	   Class.forName(serverURI);
 		} catch (ClassNotFoundException e) {
@@ -45,7 +45,7 @@ public class NotesDao {
 		 
 		 
 			try {
-				Demo(DRIVER_CLASS_NAME);
+				demo(DRIVER_CLASS_NAME);
 				connectionNote = DriverManager.getConnection(URL, USER, PASS);
 				statementNote = connectionNote.createStatement();
 				
