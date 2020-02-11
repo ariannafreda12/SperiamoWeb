@@ -22,7 +22,7 @@ public class UserDao {
 	 private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	 private static final String USER = "postgres";
 	 private static final String PASS = "postgres";
-	 private final static String DRIVER_CLASS_NAME = "org.postgresql.Driver";
+	
 	 private static Connection connectionUser = null;
 	 private static Statement statementUser= null;
 	 private static ResultSet rsUser= null;
@@ -33,7 +33,7 @@ public class UserDao {
 	  public static User loginDao(String username, String password) {
 		  User u = null;
 			try {
-				Class.forName(DRIVER_CLASS_NAME);
+				Class.forName("org.postgresql.Driver");
 				connectionUser = DriverManager.getConnection(URL, USER, PASS);
 				statementUser = connectionUser.createStatement();
 				String sqlLogin = String.format(Query.LOGINQUERY, username, password);
@@ -65,7 +65,7 @@ public class UserDao {
 	  public static boolean registrationDao(String username, String password, String email) {
 		 
 	        try {
-	        	Class.forName(DRIVER_CLASS_NAME);
+	        	Class.forName("org.postgresql.Driver");
 	            connectionUser = DriverManager.getConnection(URL, USER, PASS);
 	            statementUser = connectionUser.createStatement();
 	            String sqlRegistration= String.format(Query.REGQUERY, username, password, email);
@@ -107,7 +107,7 @@ public class UserDao {
 			
 			User u = null;
 				try {
-					Class.forName(DRIVER_CLASS_NAME);
+					Class.forName("org.postgresql.Driver");
 					connectionUser = DriverManager.getConnection(URL, USER, PASS);
 					statementUser = connectionUser.createStatement();
 					String sqlFoundUser = String.format(Query.FOUNDUSERQUERY, username);
@@ -139,7 +139,7 @@ public class UserDao {
 		public static boolean changePassword(String username, String password) {
 			
 		        try {
-		        	Class.forName(DRIVER_CLASS_NAME);
+		        	Class.forName("org.postgresql.Driver");
 		            connectionUser = DriverManager.getConnection(URL, USER, PASS);
 		            statementUser = connectionUser.createStatement();
 		            String sqlPassword= String.format(Query.CHANGEPASSWORDQUERY, password, username);

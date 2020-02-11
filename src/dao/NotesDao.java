@@ -17,7 +17,6 @@ public class NotesDao {
 	private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	private static final String USER = "postgres";
 	private static final String PASS = "postgres";
-	private final static String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 	private static Statement statementNote = null;
 	private static Connection connectionNote = null;
 	
@@ -37,7 +36,7 @@ public class NotesDao {
 		 
 		 
 			try {
-				Class.forName(DRIVER_CLASS_NAME);
+				Class.forName("org.postgresql.Driver");
 				connectionNote = DriverManager.getConnection(URL, USER, PASS);
 				statementNote = connectionNote.createStatement();
 				
@@ -82,7 +81,7 @@ public class NotesDao {
 		 
 	    
 	        try {
-	        	Class.forName(DRIVER_CLASS_NAME);
+	        	Class.forName("org.postgresql.Driver");
 	            connectionNote = DriverManager.getConnection(URL, USER, PASS);
 	           statementNote = connectionNote.createStatement();
 	            String sqlAddNote= String.format(Query.SAVENOTEQUERY,note,username);
@@ -131,7 +130,7 @@ public class NotesDao {
 		
 		 Notes notes = null;
 		 try {
-			 Class.forName(DRIVER_CLASS_NAME);
+			 Class.forName("org.postgresql.Driver");
 				connectionNote = DriverManager.getConnection(URL, USER, PASS);
 				statementNote = connectionNote.createStatement();
 					String sqlChooseNote = String.format(Query.OPENNOTEQUERY,note);
@@ -163,7 +162,7 @@ public class NotesDao {
 		 
 	      
 	        try {
-	        	Class.forName(DRIVER_CLASS_NAME);
+	        	Class.forName("org.postgresql.Driver");
 	            connectionNote = DriverManager.getConnection(URL, USER, PASS);
 	            statementNote = connectionNote.createStatement();
 	            String sql1ModifyNote= String.format(Query.MODIFYNOTEQUERY,noteModified,note);
@@ -207,7 +206,7 @@ public class NotesDao {
 	 public static boolean deleteNoteDao(String note, String username) {
 		 
 	        try {
-	        	Class.forName(DRIVER_CLASS_NAME);
+	        	Class.forName("org.postgresql.Driver");
 	            connectionNote = DriverManager.getConnection(URL, USER, PASS);
 	            statementNote = connectionNote.createStatement();
 	            String sql1DeleteNote= String.format(Query.DELETENOTEQUERY,note,username);

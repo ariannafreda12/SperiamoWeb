@@ -16,7 +16,7 @@ public class UserProfileDao {
 	private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	private static final String USER = "postgres";
 	private static final String PASS = "postgres";
-	private final static String DRIVER_CLASS_NAME = "org.postgresql.Driver";
+	
 	
 	private static Connection connectionProfile = null;
 	private static Statement statementProfile = null;
@@ -42,7 +42,7 @@ public class UserProfileDao {
 	 public static boolean saveRecipeDao(String title, String preparation, String difficulty, String category, String time, String necessary,String username) {
 		 
 	        try {
-	        	Class.forName(DRIVER_CLASS_NAME);
+	        	Class.forName("org.postgresql.Driver");
 	            connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 	            statementProfile = connectionProfile.createStatement();
 	            String sql1SaveUserRecipe= String.format(Query.SAVEQUERY, title, preparation, difficulty,category,time,necessary,username);
@@ -88,7 +88,7 @@ public class UserProfileDao {
 		 Set<UserProfile> up= new HashSet<>();
 		 
 			try {
-				Class.forName(DRIVER_CLASS_NAME);
+				Class.forName("org.postgresql.Driver");
 				connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 				statementProfile = connectionProfile.createStatement();
 				String sqlUserRecipe = String.format(Query.PROFILEQUERY, username);
@@ -122,7 +122,7 @@ public class UserProfileDao {
 	
 		 UserProfile up = null;
 			try {
-				Class.forName(DRIVER_CLASS_NAME);
+				Class.forName("org.postgresql.Driver");
 				connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 				statementProfile= connectionProfile.createStatement();
 					
@@ -155,24 +155,24 @@ public class UserProfileDao {
 	 
 	 public static UserProfile checkChefDao(String username, String title) {
 			
-		 UserProfile up = null;
+		 UserProfile upC = null;
 			try {
-				Class.forName(DRIVER_CLASS_NAME);
+				Class.forName("org.postgresql.Driver");
 				connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 				statementProfile= connectionProfile.createStatement();
 					
-					String sqlChooseUserRecipe = String.format(Query.CHEFQUERY,username,title);
+					String sqlCheckChef = String.format(Query.CHEFQUERY,username,title);
 					
 			
-					rsProfile = statementProfile.executeQuery(sqlChooseUserRecipe);
+					rsProfile = statementProfile.executeQuery(sqlCheckChef);
 					if(rsProfile.next()) {
 					
-						up = new UserProfile(rsProfile.getString(TITLE), rsProfile.getString(PREPARATION),rsProfile.getString(DIFFICULTY),  rsProfile.getString(CATEGORY), rsProfile.getString(TIME),rsProfile.getString(NECESSARY),rsProfile.getString(USERNAME));
+						upC = new UserProfile(rsProfile.getString(TITLE), rsProfile.getString(PREPARATION),rsProfile.getString(DIFFICULTY),  rsProfile.getString(CATEGORY), rsProfile.getString(TIME),rsProfile.getString(NECESSARY),rsProfile.getString(USERNAME));
 				
 					}
 				
-			} catch(Exception eChooseUserRecipe) {
-				logger.log(null, CONTEXT,eChooseUserRecipe);
+			} catch(Exception eCheckChef) {
+				logger.log(null, CONTEXT,eCheckChef);
 			} finally {
 				try {
 					if(connectionProfile != null)
@@ -181,17 +181,17 @@ public class UserProfileDao {
 						statementProfile.close();
 					if(rsProfile != null)
 						rsProfile.close();
-				} catch (SQLException eChooseUserRecipe) {
-					logger.log(null, CONTEXT,eChooseUserRecipe);
+				} catch (SQLException eCheckChef) {
+					logger.log(null, CONTEXT,eCheckChef);
 				}
 			}
-			return up;		 
+			return upC;		 
 	 }
 	 
 	 public static boolean deleteRecipeDao(String title, String username) {
 		
 	        try {
-	        	Class.forName(DRIVER_CLASS_NAME);
+	        	Class.forName("org.postgresql.Driver");
 	            connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 	            statementProfile = connectionProfile.createStatement();
 	            String sql1DeleteRecipe= String.format(Query.DELETERECIPEQUERY,title,username);
@@ -233,7 +233,7 @@ public static UserProfile favRecipeDao(String username) {
 		 UserProfile favRecipe= null;
 		 
 			try {
-				Class.forName(DRIVER_CLASS_NAME);
+				Class.forName("org.postgresql.Driver");
 				connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 				statementProfile = connectionProfile.createStatement();
 			
