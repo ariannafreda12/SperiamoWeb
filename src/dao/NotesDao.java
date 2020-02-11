@@ -17,6 +17,7 @@ public class NotesDao {
 	private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	private static final String USER = "postgres";
 	private static final String PASS = "postgres";
+	private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 	private static Statement statementNote = null;
 	private static Connection connectionNote = null;
 	
@@ -24,6 +25,14 @@ public class NotesDao {
 	static Logger logger = Logger.getAnonymousLogger();
 	private static final String CONTEXT = "context";
 	
+	   public static void Demo(String serverURI) throws SQLException {
+	       try {
+	    	   Class.forName(serverURI);
+		} catch (ClassNotFoundException e) {
+			logger.log(null, CONTEXT,e);
+		}
+		
+	    }
 	
 	private NotesDao() {
 	    throw new IllegalStateException("Utility class");
@@ -36,7 +45,7 @@ public class NotesDao {
 		 
 		 
 			try {
-				Class.forName("org.postgresql.Driver");
+				Demo(DRIVER_CLASS_NAME);
 				connectionNote = DriverManager.getConnection(URL, USER, PASS);
 				statementNote = connectionNote.createStatement();
 				
@@ -81,7 +90,7 @@ public class NotesDao {
 		 
 	    
 	        try {
-	        	Class.forName("org.postgresql.Driver");
+	        	Class.forName(DRIVER_CLASS_NAME);
 	            connectionNote = DriverManager.getConnection(URL, USER, PASS);
 	           statementNote = connectionNote.createStatement();
 	            String sqlAddNote= String.format(Query.SAVENOTEQUERY,note,username);
@@ -130,7 +139,7 @@ public class NotesDao {
 		
 		 Notes notes = null;
 		 try {
-			 Class.forName("org.postgresql.Driver");
+			 Class.forName(DRIVER_CLASS_NAME);
 				connectionNote = DriverManager.getConnection(URL, USER, PASS);
 				statementNote = connectionNote.createStatement();
 					String sqlChooseNote = String.format(Query.OPENNOTEQUERY,note);
@@ -162,7 +171,7 @@ public class NotesDao {
 		 
 	      
 	        try {
-	        	Class.forName("org.postgresql.Driver");
+	        	Class.forName(DRIVER_CLASS_NAME);
 	            connectionNote = DriverManager.getConnection(URL, USER, PASS);
 	            statementNote = connectionNote.createStatement();
 	            String sql1ModifyNote= String.format(Query.MODIFYNOTEQUERY,noteModified,note);
@@ -206,7 +215,7 @@ public class NotesDao {
 	 public static boolean deleteNoteDao(String note, String username) {
 		 
 	        try {
-	        	Class.forName("org.postgresql.Driver");
+	        	Class.forName(DRIVER_CLASS_NAME);
 	            connectionNote = DriverManager.getConnection(URL, USER, PASS);
 	            statementNote = connectionNote.createStatement();
 	            String sql1DeleteNote= String.format(Query.DELETENOTEQUERY,note,username);
