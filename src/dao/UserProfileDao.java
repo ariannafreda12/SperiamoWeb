@@ -16,7 +16,7 @@ public class UserProfileDao {
 	private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	private static final String USER = "postgres";
 	private static final String PASS = "postgres";
-	
+	private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 	
 	private static Connection connectionProfile = null;
 	private static Statement statementProfile = null;
@@ -38,11 +38,20 @@ public class UserProfileDao {
 	    throw new IllegalStateException("Utility class");
 	  }
 	
+	public static void demoUp(String serverURIUp){
+	       try {
+	    	   Class.forName(serverURIUp);
+		} catch (ClassNotFoundException e) {
+			logger.log(null, CONTEXT,e);
+		}
+		
+	    }
+	
 	
 	 public static boolean saveRecipeDao(String title, String preparation, String difficulty, String category, String time, String necessary,String username) {
 		 
 	        try {
-	        	Class.forName("org.postgresql.Driver");
+	        	demoUp(DRIVER_CLASS_NAME);
 	            connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 	            statementProfile = connectionProfile.createStatement();
 	            String sql1SaveUserRecipe= String.format(Query.SAVEQUERY, title, preparation, difficulty,category,time,necessary,username);
@@ -88,7 +97,7 @@ public class UserProfileDao {
 		 Set<UserProfile> up= new HashSet<>();
 		 
 			try {
-				Class.forName("org.postgresql.Driver");
+				demoUp(DRIVER_CLASS_NAME);
 				connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 				statementProfile = connectionProfile.createStatement();
 				String sqlUserRecipe = String.format(Query.PROFILEQUERY, username);
@@ -122,7 +131,7 @@ public class UserProfileDao {
 	
 		 UserProfile up = null;
 			try {
-				Class.forName("org.postgresql.Driver");
+				demoUp(DRIVER_CLASS_NAME);
 				connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 				statementProfile= connectionProfile.createStatement();
 					
@@ -157,7 +166,7 @@ public class UserProfileDao {
 			
 		 UserProfile upC = null;
 			try {
-				Class.forName("org.postgresql.Driver");
+				demoUp(DRIVER_CLASS_NAME);
 				connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 				statementProfile= connectionProfile.createStatement();
 					
@@ -191,7 +200,7 @@ public class UserProfileDao {
 	 public static boolean deleteRecipeDao(String title, String username) {
 		
 	        try {
-	        	Class.forName("org.postgresql.Driver");
+	        	demoUp(DRIVER_CLASS_NAME);
 	            connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 	            statementProfile = connectionProfile.createStatement();
 	            String sql1DeleteRecipe= String.format(Query.DELETERECIPEQUERY,title,username);
@@ -233,7 +242,7 @@ public static UserProfile favRecipeDao(String username) {
 		 UserProfile favRecipe= null;
 		 
 			try {
-				Class.forName("org.postgresql.Driver");
+				demoUp(DRIVER_CLASS_NAME);
 				connectionProfile = DriverManager.getConnection(URL, USER, PASS);
 				statementProfile = connectionProfile.createStatement();
 			

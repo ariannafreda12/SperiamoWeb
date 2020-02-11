@@ -25,7 +25,7 @@ public class NotesDao {
 	static Logger logger = Logger.getAnonymousLogger();
 	private static final String CONTEXT = "context";
 	
-	   public static void demo(String serverURI){
+	   public static void demoN(String serverURI){
 	       try {
 	    	   Class.forName(serverURI);
 		} catch (ClassNotFoundException e) {
@@ -45,7 +45,7 @@ public class NotesDao {
 		 
 		 
 			try {
-				demo(DRIVER_CLASS_NAME);
+				demoN(DRIVER_CLASS_NAME);
 				connectionNote = DriverManager.getConnection(URL, USER, PASS);
 				statementNote = connectionNote.createStatement();
 				
@@ -90,7 +90,7 @@ public class NotesDao {
 		 
 	    
 	        try {
-	        	Class.forName(DRIVER_CLASS_NAME);
+	        	demoN(DRIVER_CLASS_NAME);
 	            connectionNote = DriverManager.getConnection(URL, USER, PASS);
 	           statementNote = connectionNote.createStatement();
 	            String sqlAddNote= String.format(Query.SAVENOTEQUERY,note,username);
@@ -139,7 +139,7 @@ public class NotesDao {
 		
 		 Notes notes = null;
 		 try {
-			 Class.forName(DRIVER_CLASS_NAME);
+			 demoN(DRIVER_CLASS_NAME);
 				connectionNote = DriverManager.getConnection(URL, USER, PASS);
 				statementNote = connectionNote.createStatement();
 					String sqlChooseNote = String.format(Query.OPENNOTEQUERY,note);
@@ -171,7 +171,7 @@ public class NotesDao {
 		 
 	      
 	        try {
-	        	Class.forName(DRIVER_CLASS_NAME);
+	        	demoN(DRIVER_CLASS_NAME);
 	            connectionNote = DriverManager.getConnection(URL, USER, PASS);
 	            statementNote = connectionNote.createStatement();
 	            String sql1ModifyNote= String.format(Query.MODIFYNOTEQUERY,noteModified,note);
@@ -215,7 +215,7 @@ public class NotesDao {
 	 public static boolean deleteNoteDao(String note, String username) {
 		 
 	        try {
-	        	Class.forName(DRIVER_CLASS_NAME);
+	        	demoN(DRIVER_CLASS_NAME);
 	            connectionNote = DriverManager.getConnection(URL, USER, PASS);
 	            statementNote = connectionNote.createStatement();
 	            String sql1DeleteNote= String.format(Query.DELETENOTEQUERY,note,username);

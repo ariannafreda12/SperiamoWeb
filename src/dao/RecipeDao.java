@@ -20,6 +20,7 @@ public class RecipeDao {
 	private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	private static final String USER = "postgres";
 	private static final String PASS = "postgres";
+	private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 
 	
 	private static Connection connectionRecipe = null;
@@ -42,6 +43,16 @@ public class RecipeDao {
 	    throw new IllegalStateException("Utility class");
 	  }
 	
+	 public static void demoR(String serverURIR){
+	       try {
+	    	   Class.forName(serverURIR);
+		} catch (ClassNotFoundException e) {
+			logger.log(null, CONTEXT,e);
+		}
+		
+	    }
+	
+	
 	//find recipe by ingredient
 	 public static Set<Recipe> ingredientsDao(Set <String> ingredientList, String category,String difficulty) {
 		 Recipe r = null;
@@ -49,7 +60,7 @@ public class RecipeDao {
 		
 		 
 			try {
-				Class.forName("org.postgresql.Driver");
+				demoR(DRIVER_CLASS_NAME);
 				connectionRecipe = DriverManager.getConnection(URL, USER, PASS);
 				statementRecipe = connectionRecipe.createStatement();
 				Iterator<String> it;
@@ -89,7 +100,7 @@ public class RecipeDao {
 		 Set<Recipe> popularRecipe= new HashSet<>();
 		 
 			try {
-				Class.forName("org.postgresql.Driver");
+				demoR(DRIVER_CLASS_NAME);
 				connectionRecipe = DriverManager.getConnection(URL, USER, PASS);
 				statementRecipe = connectionRecipe.createStatement();
 			
@@ -126,7 +137,7 @@ public class RecipeDao {
 		 Recipe dailyRecipe= null;
 		 
 			try {
-				Class.forName("org.postgresql.Driver");
+				demoR(DRIVER_CLASS_NAME);
 				connectionRecipe = DriverManager.getConnection(URL, USER, PASS);
 				statementRecipe = connectionRecipe.createStatement();
 			
@@ -159,7 +170,7 @@ public class RecipeDao {
 	 public static Recipe chooseRecipeDao(String title) {
 		 Recipe r = null;
 			try {
-				Class.forName("org.postgresql.Driver");
+				demoR(DRIVER_CLASS_NAME);
 				connectionRecipe = DriverManager.getConnection(URL, USER, PASS);
 				statementRecipe = connectionRecipe.createStatement();
 					
@@ -193,8 +204,7 @@ public class RecipeDao {
 	 public static boolean reviewRecipeDao(String title, int review) {
 		
 	        try {
-	        	Class.forName("org.postgresql.Driver");
-	           
+	        	demoR(DRIVER_CLASS_NAME);
 	            connectionRecipe = DriverManager.getConnection(URL, USER, PASS);
 	            statementRecipe = connectionRecipe.createStatement();
 	            String sql1Review= String.format(Query.REVIEWQUERY,review+1, title);
@@ -237,7 +247,7 @@ public class RecipeDao {
 	 public static boolean addReviewDao(String username, String title) {
 		
 	        try {
-	        	Class.forName("org.postgresql.Driver");
+	        	demoR(DRIVER_CLASS_NAME);
 	            connectionRecipe = DriverManager.getConnection(URL, USER, PASS);
 	            statementRecipe = connectionRecipe.createStatement();
 	            String sql1AddReview= String.format(Query.SAVEREVIEWQUERY,username,true,title);
@@ -281,7 +291,7 @@ public class RecipeDao {
 	      
 	    
 	        try {
-	        	Class.forName("org.postgresql.Driver");
+	        	demoR(DRIVER_CLASS_NAME);
 	            connectionRecipe = DriverManager.getConnection(URL, USER, PASS);
 	            statementRecipe = connectionRecipe.createStatement();
 	            String sql1CheckReview= String.format(Query.CHECKREVIEWQUERY,username,title);
@@ -310,4 +320,3 @@ public class RecipeDao {
 		return false;		 
 	    }
 }
-
