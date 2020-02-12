@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;">
 <style>
-.home{
+.homeRecipe{
 	background-color:transparent;
 	outline: none;
 	display:inline-block;
@@ -23,7 +23,7 @@
     top: -14px;
     align:center;
 }
-.hiButton {
+.hiButtonRecipe {
 	background-color: white;
 	opacity: 0.7;
 	border-radius:6px;
@@ -40,6 +40,9 @@
     right : 100px;
     top: 6px;
     align:center;
+}
+.table{
+	width:70%
 }
 </style>
 
@@ -131,7 +134,7 @@
                     <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
                 </div>
             </nav>
-            <div><h1 class="u-text u-text-body-color u-title u-text-1">WhatEat?!</h1> <label class="hiButton"><b><i><%out.println(" Hi " + ub.getUsername());%></i></b></label><a href="homePage.jsp" class="home"><img src="images\homeIcon.png" width="40" height="35" style="right:20px; align:right"></a></div> 
+            <div><h1 class="u-text u-text-body-color u-title u-text-1">WhatEat?!</h1> <label class="hiButtonRecipe"><b><i><%out.println(" Hi " + ub.getUsername());%></i></b></label><a href="homePage.jsp" class="home"><img src="images\homeIcon.png" width="40" height="35" style="right:20px; align:right"></a></div> 
         </div>
     </header>
     
@@ -164,13 +167,13 @@
         <br>
         <div class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-border-radius-32 u-container-style u-group u-opacity u-opacity-35 u-palette-3-light-3 u-shape-round u-group-1">
         <div class="u-container-layout u-container-layout-1">
-        <table width="500">
-        <h3 align="center" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-weight:bold"><%out.println(rb.getRecBeanTitle());%></h2>
-        <h6 align="center" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Category:</b></i>&nbsp;&nbsp;<%out.println(rb.getRecBeanCategory());%></h6>
-        <h6 align="center" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Difficulty:</b></i>&nbsp;&nbsp;<%out.println(rb.getRecBeanDifficulty());%></h6>
-        <h6 align="center" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Time:</b></i>&nbsp;&nbsp;<%out.println(rb.getrecBeanTime());%></h6>
-        <h6 align="center" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Ingredients:</b></i>&nbsp;&nbsp;<br><%out.println(rb.getRecBeanNecessary());%></h6>
-        <h6 align="center" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Preparation:</b></i>&nbsp;&nbsp;<br><%out.println(rb.getRecBeanPreparation());%></h6>      
+        <table class="table">
+        <h3 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-weight:bold"><%out.println(rb.getRecBeanTitle());%></h2>
+        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Category:</b></i>&nbsp;&nbsp;<%out.println(rb.getRecBeanCategory());%></h6>
+        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Difficulty:</b></i>&nbsp;&nbsp;<%out.println(rb.getRecBeanDifficulty());%></h6>
+        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Time:</b></i>&nbsp;&nbsp;<%out.println(rb.getrecBeanTime());%></h6>
+        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Ingredients:</b></i>&nbsp;&nbsp;<br><%out.println(rb.getRecBeanNecessary());%></h6>
+        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Preparation:</b></i>&nbsp;&nbsp;<br><%out.println(rb.getRecBeanPreparation());%></h6>      
         </table></div></div>   
         <br> 
         <%
