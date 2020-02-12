@@ -35,6 +35,22 @@
     top: 6px;
     align:center;
 }
+table{
+font-family:montserrat;
+font-size:18px;
+cellspacing:2;
+cellpadding: 2;
+width:60%;
+left:280px;
+vertical-align:top;
+text-align:left;
+text-vertical-align:top;
+}
+.td{
+vertical-align:top;
+text-vertical-align:top;
+}
+
 </style>
 
 <head>
@@ -223,13 +239,13 @@
             </div>
              
             <h4 style = "font-family:montserrat" class="u-custom-font u-text u-text-default u-text-12">Select ingredients:</h4>
-            <table style = "font-family:montserrat; font-size:18px;" class="ms" cellspacing="2" cellpadding="2" align="center" width="800" >
+            <table class="table">
    	 
     <tr>
-         <th width="300" align="left"><i>Varius</th>
-         <th width="300" align="left"><i>Sauces</th>
-         <th width="300" align="left"><i>Herbspices</th>
-         <th width="300" align="left"><i>Snacks</th>
+         <th><i>Varius</th>
+         <th><i>Sauces</th>
+         <th><i>Herbspices</th>
+         <th><i>Snacks</th>
          
    	</tr>
     <%
@@ -243,38 +259,38 @@
 	String[] meat = {"Bacon", "Beef", "Chicken", "Duck", "Ham", "Lamb", "Liver", "Nince", "Salami", "Sausage", "Turkey", "Veal"};
 	%>	
 		<tr>
-		<td width="300" align="left" valign="top"><%
+		<td class="td"><%
 		for(String s1 : varius) {
-			%><br><input type="checkbox" name="ingr" value="<%out.println(s1);%>" align="left">  <%out.println(s1);}%></td><td width="300" align="left"valign="top"><%
+			%><br><input type="checkbox" name="ingr" value="<%out.println(s1);%>" align="left">  <%out.println(s1);}%></td><td class="td"><%
 		
 		for(String s2 : sauces) {
-			%><br><input type="checkbox" name="ingr" value="<%out.println(s2);%>" align="left">  <%out.println(s2);}%></td><td width="300" align="left" valign="top"><%
+			%><br><input type="checkbox" name="ingr" value="<%out.println(s2);%>" align="left">  <%out.println(s2);}%></td><td class="td"><%
 			
 		for(String s3 : herbspices) {
-			%><br><input type="checkbox" name="ingr" value="<%out.println(s3);%>" align="left">  <%out.println(s3);}%></td><td width="300" align="left" valign="top"><%
+			%><br><input type="checkbox" name="ingr" value="<%out.println(s3);%>" align="left">  <%out.println(s3);}%></td><td class="td"><%
 		
 		for(String s4 : snack) {
 			%><br><input type="checkbox" name="ingr" value="<%out.println(s4);%>" align="left">  <%out.println(s4);}%></td></tr>
 		
 		<br>
-		</table><table style = "font-family:montserrat; font-size:18px;" class="ms" cellspacing="2" cellpadding="2" align="center" width="800"  >
+		</table><table class="table">
 		
-		  <th width="300" align="left"><br><i>Vegetables</th>
-          <th width="300" align="left"><br><i>Fruit</th>
-          <th width="300" align="left"><br><i>Fish</th>
-          <th width="300" align="left"><br>Meat</th>
+		  <th class="th"><br><i>Vegetables</th>
+          <th class="th"><br><i>Fruit</th>
+          <th class="th"><br><i>Fish</th>
+          <th class="th"><br>Meat</th>
         </tr>
         
-        <tr><td align="left" valign="top"><%
+        <tr><td class="td"><%
         		 
 		for(String s5 : vegetables) {
-			%><br><input type="checkbox" name="ingr" value="<%out.println(s5);%>" align="left">  <%out.println(s5);}%></td><td width="300" align="left" valign="top"><%
+			%><br><input type="checkbox" name="ingr" value="<%out.println(s5);%>" align="left">  <%out.println(s5);}%></td><td class="td"><%
 		
 		for(String s6 : fruit) {
-			%><br><input type="checkbox" name="ingr" value="<%out.println(s6);%>" align="left">  <%out.println(s6);}%></td><td width="300" align="left" valign="top"><%
+			%><br><input type="checkbox" name="ingr" value="<%out.println(s6);%>" align="left">  <%out.println(s6);}%></td><td class="td"><%
 		
 		for(String s7 : fish) {
-			%><br><input type="checkbox" name="ingr" value="<%out.println(s7);%>" align="left">  <%out.println(s7);}%></td><td width="300" align="left" valign="top"><%
+			%><br><input type="checkbox" name="ingr" value="<%out.println(s7);%>" align="left">  <%out.println(s7);}%></td><td class="td"><%
 		
 		for(String s8 : meat) {
 			%><br><input type="checkbox" name="ingr" value="<%out.println(s8);%>" align="left">  <%out.println(s8);}%></td>
