@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;">
 <style>
-.home{
+.homeFound{
 	background-color:transparent;
 	outline: none;
 	display:inline-block;
@@ -25,7 +25,7 @@
     top: -14px;
     align:center;
 }
-.hiButton {
+.hiButtonFound {
 	background-color: white;
 	opacity: 0.7;
 	border-radius:6px;
@@ -43,7 +43,7 @@
     top: 6px;
     align:center;
 }
-.myButton {
+.myButtonFound {
 	background-color:transparent;
 	border-radius:6px;
 	border:0px solid #dcdcdc;
@@ -56,27 +56,35 @@
 	padding:6px 24px;
 	text-decoration:underline;
 }
-.myButton:hover {
+.myButtonFound:hover {
 	background-color:transparent;
 }
-.myButton:active {
+.myButtonFound:active {
 	position:relative;
 	top:1px;
 }
 table {
   border-collapse: collapse;
-  width: 70%;
+  width: 80%;
   border: none;
   background-color: white;
   opacity:0.99;
   font-family:montserrat; 
-  font-size: 12px
+  font-size: 14px;
+  border:2px;
+  cellspacing:2px;
+  cellpadding:2px;
+  align:center;
+  left:100px;
+  
+ 
 }
 
 th, td {
   padding: 8px;
   text-align: center;
-  border-bottom: none;
+  border-bottom: gray;
+  width:15%
 }
 
 th {font-size: 16px}
@@ -179,19 +187,19 @@ tr:hover {background-color:#f5f5f5;}
                     <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
                 </div>
             </nav>
-            <div><h1 class="u-text u-text-body-color u-title u-text-1">WhatEat?!</h1> <label class="hiButton"><b><i><%out.println(" Hi " + ub.getUsername());%></i></b></label><a href="homePage.jsp" class="home"><img src="images\homeIcon.png" width="40" height="35" style="right:20px; align:right"></a></div> 
+            <div><h1 class="u-text u-text-body-color u-title u-text-1">WhatEat?!</h1> <label class="hiButtonFound"><b><i><%out.println(" Hi " + ub.getUsername());%></i></b></label><a href="homePage.jsp" class="homeFound"><img src="images\homeIcon.png" width="40" height="35" style="right:20px; align:right"></a></div> 
         </div>
     </header>
    
 	<section class="u-align-center u-clearfix u-section-1" id="sec-0da3">
    <br>
-   <table width="500" border="2" cellspacing="2" cellpadding="2" align="center" class="table">
+   <table class="table">
    	 
       <tr>
-         <th width="300">Title</th>
-         <th width="800">Preparation</th>
-         <th width="100">Time</th>
-         <th width="100">Review</th>
+         <th>Title</th>
+         <th>Necessary</th>
+         <th>Time</th>
+         <th>Review</th>
    
     <%
 	Set <Recipe> recipe= new HashSet<>();	
@@ -228,10 +236,10 @@ tr:hover {background-color:#f5f5f5;}
 	        
 	        <tr>
 	        <form action="recipe.jsp" method="post">
-			<td width="300"><input type="submit" class="myButton" name="recipe" value="<%out.println(s.getTitle());%>"></form></td>
-			<td width="800"><%out.println(s.getPreparation());%></td>
-			<td width="100"><%out.println(s.getTime());%></td>
-			<td width="100"><%out.println(s.getReview());%></td>
+			<td ><input type="submit" class="myButtonFound" name="recipe" value="<%out.println(s.getTitle());%>"></form></td>
+			<td class="tdprep"><%out.println(s.getNecessary());%></td>
+			<td><%out.println(s.getTime());%></td>
+			<td><%out.println(s.getReview());%></td>
 			</tr>
 			
 			<%
