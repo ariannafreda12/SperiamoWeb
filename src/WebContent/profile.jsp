@@ -110,7 +110,7 @@
             <label class="u-text u-text-default u-text-4">Your CookBook</label>
             <div class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-border-radius-32 u-container-style u-group u-opacity u-opacity-35 u-palette-3-light-3 u-shape-round u-group-1">
                 <div class="u-container-layout u-container-layout-1">
-                <table>
+                <table><th></th>
 					<tr>
 					<%
 					Set<Notes> notes;
@@ -141,7 +141,7 @@
               </div>
             <div class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-border-radius-32 u-container-style u-group u-opacity u-opacity-35 u-palette-3-light-3 u-shape-round u-group-2">
                 <div class="u-container-layout u-container-layout-2">
-                	<table>
+                	<table><th></th>
 						<tr>
 							<% 
 							UserProfileManager upm= UserProfileManager.getInstance();
@@ -153,7 +153,7 @@
  		       			</tr>
           				 <tr>
           				 	<form action="recipe.jsp" method="post">
-          				 	<td align="left"><input type="submit" href="recipe.jsp" style="cursor:pointer" class="myButton"  name="recipe" value="<%out.println(s.getTitle());%>"></td></form>
+          				 	<td><input type="submit" href="recipe.jsp" style="cursor:pointer" class="myButton"  name="recipe" value="<%out.println(s.getTitle());%>"></td></form>
 						</tr>
 						<% } }%>
  				</table>
