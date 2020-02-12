@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-     <%@ page import = "controller.UserProfileManager"%>
+    <%@ page import = "controller.UserProfileManager"%>
     <%@ page import = "controller.LoginManager"%>
     <%@ page import = "model.UserProfile"%>
     <%@ page import = "model.User"%>
@@ -28,7 +28,7 @@
 <!DOCTYPE html>
 <html style="font-size: 20px;">
 <style>
-.hiButton {
+.hiButtonHome {
 	background-color: white;
 	opacity: 0.7;
 	border-radius:6px;
@@ -46,7 +46,7 @@
     top: 6px;
     align:center;
 }
-.myButton {
+.myButtonHome {
 	background-color:transparent;
 	border-radius:6px;
 	border:0px solid #dcdcdc;
@@ -59,12 +59,18 @@
 	padding:6px 24px;
 	text-decoration:underline;
 }
-.myButton:hover {
+.myButtonHome:hover {
 	background-color:transparent;
 }
-.myButton:active {
+.myButtonHome:active {
 	position:relative;
 	top:1px;
+}
+table{
+align:center;
+width:60%;
+align:center;
+font-family:montserrat
 }
 </style>
 <head>
@@ -94,7 +100,7 @@
         <div class="u-clearfix u-sheet u-valign-top u-sheet-1">
             <img src="images/icon.png" alt="" class="u-image u-image-default u-image-1" data-image-width="980" data-image-height="981">
             <h2 class="u-custom-font u-font-Lobster u-text u-text-black u-text-default u-text-1">WhatEat?!</h2></div> 
-        <label class="hiButton"><b><i><%out.println(" Hi " + ub.getUsername());%></i></b></label>
+        <label class="hiButtonHome"><b><i><%out.println(" Hi " + ub.getUsername());%></i></b></label>
         </div>
         
     </header>
@@ -112,7 +118,7 @@
                                             <div class="u-container-layout u-container-layout-2">
                                                <table class="u-custom-font u-font-montserrat u-text u-text-6">
 													<tr>
-													<th width="300">Title</th>
+													<th >Title</th>
 													<th>Likes</th>
 														<%
 														Set<Recipe> poprecipes = new HashSet<>();
@@ -127,7 +133,7 @@
 																	 <tr>
 																	 <form action="recipe.jsp" method="post">
 																	 <td>
-            														<input type="submit" name="recipe" href="recipe.jsp" class="myButton" value="<%out.println(s.getTitle());%>"></form></td>
+            														<input type="submit" name="recipe" href="recipe.jsp" class="myButtonHome" value="<%out.println(s.getTitle());%>"></form></td>
 																	 <td><%out.println(s.getReview());%></td>
 																	   </tr>
 																	   <%  } } %>
@@ -176,9 +182,9 @@
         									daily=RecipeManager.dailyRecipe(); 
         									%>
         									<label name="label1" class="-align-center u-custom-font u-heading-font u-text u-text-default u-text-1"><%out.println("Try daily recipe");%></label>
-                                        	<div align="center" class="u-container-style u-group u-opacity u-opacity-40 u-palette-3-light-3 u-group-3">
-                                            <div align="center" class="u-container-layout u-container-layout-6">
-        									<table align="center" width=60% style = "font-family:montserrat;">
+                                        	<div class="u-container-style u-group u-opacity u-opacity-40 u-palette-3-light-3 u-group-3">
+                                            <div class="u-container-layout u-container-layout-6">
+        									<table class="table">
         									<h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-weight:bold; font-size:24px"><%out.println(daily.getTitle());%></h6>
         									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px"><i><b>Category:</b></i>&nbsp;&nbsp;<%out.println(daily.getCategory());%></h9><br>
         									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px"><i><b>Difficulty:</b></i>&nbsp;&nbsp;<%out.println(daily.getDifficulty());%></h9><br>
@@ -194,9 +200,9 @@
         										fav=UserProfileManager.favRecipe(lm.getUser().getUsername());
         								 %>
         									<label name="label1" class="-align-center u-custom-font u-heading-font u-text u-text-default u-text-1"><%out.println("One of your favourite recipe");%></label>
-                                        	<div align="center" class="u-container-style u-group u-opacity u-opacity-40 u-palette-3-light-3 u-group-3">
-                                            <div align="center" class="u-container-layout u-container-layout-6">
-        									<table align="center" width=60%  align="center" style= "font-family:montserrat;">
+                                        	<div class="u-container-style u-group u-opacity u-opacity-40 u-palette-3-light-3 u-group-3">
+                                            <div class="u-container-layout u-container-layout-6">
+        									<table class="table">
         	   								<h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-weight:bold; font-size:24px"><%out.println(fav.getTitle());%></a></h6>
             								<h9 name="cat" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" ><i><b>&nbsp;Category:</b></i>&nbsp;&nbsp;<%out.println(fav.getCategory());%></h9><br>
             								<h9 name="diff" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" ><i><b>&nbsp;Difficulty:</b></i>&nbsp;&nbsp;<%out.println(fav.getDifficulty());%></h9><br>
@@ -212,7 +218,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>s
             </div>
         </div>
     </section>
@@ -226,4 +232,4 @@
   </footer>
 </body>
 
-</html>
+</html>s
